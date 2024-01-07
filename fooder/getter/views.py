@@ -1,5 +1,5 @@
 from rest_framework import viewsets
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework import generics
 from django.contrib.auth.models import User
@@ -19,9 +19,10 @@ class DeliveryRequestViewSet(viewsets.ModelViewSet):
 class DeliveryViewSet(viewsets.ModelViewSet):
     queryset = Delivery.objects.all()
     serializer_class = DeliverySerializer
+    permission_classes = (IsAuthenticated,)
 
 
-class MyObtainTokenPairView(TokenObtainPairView):
+class FooderObtainTokenPairView(TokenObtainPairView):
     permission_classes = (AllowAny,)
     serializer_class = FooderTokenObtainPairSerializer
 
