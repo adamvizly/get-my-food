@@ -1,0 +1,18 @@
+{% extends 'bootstrap.html' %}
+{% load django_bootstrap5 %}
+
+{% block bootstrap5_content %}
+    <div class="container">
+      <h1>Food Delivery In University</h1>
+
+        <ul class="nav nav-pills">
+            <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+            {% if not user.is_authenticated %}<li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>{% endif %}
+            {% if user.is_authenticated %}<li class="nav-item"><a class="nav-link" href="{% url 'signout' %}">Sign Out</a></li>{% endif %}
+        </ul>
+
+        {% autoescape off %}{% bootstrap_messages %}{% endautoescape %}
+        {% block content %}{% endblock %}
+    </div>
+
+{% endblock %}

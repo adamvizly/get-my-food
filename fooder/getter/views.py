@@ -13,8 +13,7 @@ class SignUp(generic.CreateView):
     template_name = "signup.html"
 
 class SignedOut(generic.TemplateView):
-
-    template_name = "registration/logout.html"
+    template_name = "home.html"
 
     def get(self, request: HttpRequest):
         logout(request)

@@ -1,14 +1,35 @@
-{% extends '_base.html' %}
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% load static %}
 
-{% block title %}Home{% endblock %}
+{% block title %}Food Delivery In University{% endblock %}
 
 {% block content %}
 {% if user.is_authenticated %}
-  Welcome, {{ user.first_name }}!
-  <p></p><a href="{% url 'signout'%}">Sign Out</a></p>
+<div class="row">
+  <div class="col-md-8">
+    <div class="text-center">
+      Welcome, {{ user.first_name }}!
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="text-center">
+      <img src="{% static 'images/homepage_photo.jpg' %}" class="img-fluid rounded">
+    </div>
+  </div>
+</div>
 {% else %}
-  <p>You are not logged in</p>
-  <a href="{% url 'login' %}">Log In</a> |
-  <a href="{% url 'signup' %}">Sign Up</a>
+<div class="row">
+  <div class="col-md-8">
+    <div class="text-center">
+      This is a way of better food delivery in University.
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="text-center">
+      <img src="{% static 'images/homepage_photo.jpg' %}" class="img-fluid rounded">
+    </div>
+  </div>
+</div>
 {% endif %}
 {% endblock %}
