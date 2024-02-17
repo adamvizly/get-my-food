@@ -1,33 +1,11 @@
-from rest_framework import viewsets
-from rest_framework.permissions import AllowAny, IsAuthenticated
-from rest_framework_simplejwt.views import TokenObtainPairView
-from rest_framework import generics
-from django.contrib.auth.models import User
-from getter.serializers import (
-    DeliverySerializer, DeliveryRequestSerializer,
-    FooderTokenObtainPairSerializer, RegisterSerializer
-    ) 
-from getter.models import Delivery, DeliveryRequest
+from django.urls import reverse_lazy
+from django.views import generic
+
+from .forms import CustomUserCreationForm
 
 
-class DeliveryRequestViewSet(viewsets.ModelViewSet):
-    queryset = DeliveryRequest.objects.all()
-    serializer_class = DeliveryRequestSerializer
-    permission_classes = (AllowAny,)
+class SignUp(generic.CreateView):
+    form_class = CustomUserCreationForm
+    success_url = reverse_lazy("login")
+    template_name = "signup.html"
 
-
-class DeliveryViewSet(viewsets.ModelViewSet):
-    queryset = Delivery.objects.all()
-    serializer_class = DeliverySerializer
-    permission_classes = (IsAuthenticated,)
-
-
-class FooderObtainTokenPairView(TokenObtainPairView):
-    permission_classes = (AllowAny,)
-    serializer_class = FooderTokenObtainPairSerializer
-
-
-class RegisterView(generics.CreateAPIView):
-    queryset = User.objects.all()
-    permission_classes = (AllowAny,)
-    serializer_class = RegisterSerializer
