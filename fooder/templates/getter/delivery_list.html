@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% load static %}
+
+{% block title %}Deliveries{% endblock %}
+
+{% block content %}
+<h2>Deliveries</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Request</th>
+      <th>Delivered On</th>
+      <th>Delivered By</th>
+    </tr>
+  </thead> 
+  
+  <tbody>
+    {% for delivery in deliveries %}
+    <tr>
+      <td>{{ delivery.request }}</td>
+      <td>{{ delivery.delivered_at }}</td>  
+      <td>{{ delivery.delivered_by }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<a href="{% url 'delivery-create' %}">Create Delivery</a>
+
+{% endblock %}

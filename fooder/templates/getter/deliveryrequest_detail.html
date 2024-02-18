@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% load static %}
+
+{% block title %}Delivery Request Details{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <h2>Delivery Request Details</h2>
+        <p><strong>From:</strong> {{ request.from_address }}</p>
+        <p><strong>To:</strong> {{ request.to_address }}</p>
+        <p><strong>Delivery Time:</strong> {{ request.delivery_time }}</p>
+        <p><strong>Cost:</strong> {{ request.cost }}</p>
+        <a href="{% url 'request-update' request.id %}" class="btn btn-info">Edit</a>
+        <a href="{% url 'request-delete' request.id %}" class="btn btn-danger">Delete</a>
+        <a href="{% url 'request-list' %}" class="btn btn-secondary">Back</a>
+    </div>
+    <div class="col-md-4"></div>
+</div>
+{% endblock %}

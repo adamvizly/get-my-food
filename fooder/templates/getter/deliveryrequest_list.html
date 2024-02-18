@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% load static %}
+
+{% block title %}Delivery Requests{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <h2>Delivery Requests</h2>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>From</th>
+                <th>To</th> 
+                <th>Delivery Time</th>
+                <th>Cost</th>
+            </tr>
+            </thead>
+        
+            <tbody>
+            {% for request in requests %}
+                <tr>
+                    <td>{{ request.from_address }}</td>
+                    <td>{{ request.to_address }}</td>
+                    <td>{{ request.delivery_time }}</td> 
+                    <td>{{ request.cost }}</td>
+                    <td><a href="{% url 'request-detail' request.id %}" class="btn btn-secondary">Details</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-4">
+        <a href="{% url 'request-create' %}" class="btn btn-success">Create New Request</a>
+    </div>
+</div>
+{% endblock %}

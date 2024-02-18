@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load django_bootstrap5 %}
+{% load static %}
+
+{% block title %}Delete{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-md-4"></div>
+      <div class="col-md-4">
+        <h2 class="text-center">Delete Request</h2>
+        <p class="lead text-center">Are you sure you want to delete the request?</p>
+        <form action="" method="post" class="text-center">
+            {% csrf_token %}
+            <button class="btn btn-danger">
+                Yes, Delete
+            </button>
+            <a href="{% url 'request-detail' object.id %}" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
+{% endblock %}
