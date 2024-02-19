@@ -9,7 +9,12 @@
 <div class="row">
   <div class="col-md-8">
     <div class="text-center">
-      Welcome, {{ user.first_name }}!
+      <div style="margin-top: 10%;">
+        Welcome, {{ user.first_name }}!
+      </div><br><br>
+      <a href="{% url 'request-create' %}" class="btn btn-success">Request a delivery</a>
+      <a href="{% url 'request-list' %}" class="btn btn-info">List of requests</a>
+      <a href="{% url 'delivery-list' %}" class="btn btn-warning">My Deliveries</a>
     </div>
   </div>
   <div class="col-md-4">

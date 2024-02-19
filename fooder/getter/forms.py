@@ -1,6 +1,6 @@
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.forms import ModelForm, widgets
-from .models import CustomUser, DeliveryRequest
+from .models import CustomUser, DeliveryRequest, Delivery
 
 
 class CustomUserCreationForm(UserCreationForm):

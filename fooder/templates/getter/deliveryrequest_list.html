@@ -26,7 +26,10 @@
                     <td>{{ request.to_address }}</td>
                     <td>{{ request.delivery_time }}</td> 
                     <td>{{ request.cost }}</td>
+                    {% if request.created_by_id == current_user_id %}
                     <td><a href="{% url 'request-detail' request.id %}" class="btn btn-secondary">Details</a></td>
+                    {% endif %}
+                    <td><a href="{% url 'request-accept' request.id %}" class="btn btn-success">Accept</a></td>
                 </tr>
             {% endfor %}
             </tbody>

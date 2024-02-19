@@ -38,12 +38,18 @@ class DeliveryRequest(models.Model):
     delivery_time = models.DateTimeField()
     created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     cost = models.FloatField()
+    
+    class Meta:
+        ordering = ["-created_at"]
 
 
 class Delivery(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     request = models.ForeignKey(DeliveryRequest, on_delete=models.CASCADE)
-    delivered_at = models.DateTimeField()
+    delivered_at = models.DateTimeField(null=True)
     delivered_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     completed = models.BooleanField(default=False)
+    
+    class Meta:
+        ordering = ["-created_at"]
