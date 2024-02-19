@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-sdpd_^*hv#4=6=$0s6#1l9q5+l0!rs!g*o4x$2j-%=lfe-m46$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["127.0.0.1", "localhost", "fooduniversity.pythonanywhere.com"]
 
 
 # Application definition
